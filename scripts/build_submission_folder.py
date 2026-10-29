@@ -29,14 +29,14 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 FINISHED = ROOT / "Finished"
-ZIP_PATH = ROOT / "Cole_Joshua_CVSR_Sessions_1-3.zip"
+ZIP_PATH = ROOT / "Cole_Joshua_CVSR_Sessions_1-6.zip"
 CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition"
 STUDENT = "Joshua Cole"
 
 #: Figures that are photographs -> JPEG. Charts keep their lossless PNG.
-PHOTO_FIGURES = {"b2_class_gallery.png", "b7_augmentations.png", "b8_train_batch.png"}
+PHOTO_FIGURES = {"b2_class_gallery.png", "b7_augmentations.png", "b8_train_batch.png", "s4_filter_bank.png"}
 
 CSS = """
 <style>
@@ -131,8 +131,21 @@ def tree_size(p: Path) -> int:
     return sum(f.stat().st_size for f in p.rglob("*") if f.is_file())
 
 
+#: folder, report (reports/<name>.md), PDF title, figures the report uses, notebooks copied alongside
+SESSIONS = [
+    ("04_session4_filters", "session4_filters", "Session 4 homework - filters",
+     ["s4_filter_bank.png", "s4_sigma_sweep.png", "s4_canny_vs_sobel.png", "s4_canny_parameters.png"],
+     []),    # the 5.5 MB notebook stays in the repo (the report links to it)
+    ("05_session5_baseline", "session5_baseline_report", "Session 5 - classical ML baseline",
+     ["s5_feature_model_grid.png", "s5_confusion_matrix.png"],
+     ["05_classical_baseline.ipynb", "05_classical_baseline.pdf"]),
+    ("06_session6_neural_networks", None, "",
+     [], ["06_neural_networks.ipynb", "06_neural_networks.pdf", "06_homework.ipynb", "06_homework.pdf"]),
+]
+
+
 def build_start_here() -> str:
-    return f"""# Homework Sessions 1-3 + Course Project Milestone 1
+    return f"""# Homework Sessions 1-6 + Course Project Milestone 1
 
 **Student:** {STUDENT}
 **Course:** Computer Vision and Speech Recognition - EADA
@@ -141,12 +154,16 @@ def build_start_here() -> str:
 
 ---
 
-## Read these two first
+## Read these first
 
 | # | File | What it is |
 |---|---|---|
 | 1 | `01_Part_A_notebook/homework_part_a.pdf` | **Part A** - all 12 exercises (A1.1-A3.6) with code, outputs and written answers |
 | 2 | `02_Part_B_milestone1/milestone1_report.pdf` | **Part B** - the Milestone 1 report (label strategy, splits, imbalance, preprocessing, risks) |
+| 3 | `04_session4_filters/session4_filters.pdf` | **Session 4** - filters across classes, Gaussian `sigma`, Canny vs Sobel (answers + link to the notebook) |
+| 4 | `05_session5_baseline/session5_baseline_report.pdf` | **Session 5** - classical-ML baseline (links to the code in the repo) |
+| 5 | `06_session6_neural_networks/06_neural_networks.pdf` | **Session 6 mini-challenge** - learning rate, width, depth (the updated notebook) |
+| 6 | `06_session6_neural_networks/06_homework.pdf` | **Session 6 homework** - scoreboard, `nn.Conv2d`, MLP on raw pixels |
 
 `SUBMISSION.md` is the required link list: every deliverable with its path in the repo.
 
@@ -172,7 +189,11 @@ Finished/
 │   ├── figures/                     the B2 / B7 / B8 figures
 │   └── source_code/                 src/milk10k (the package), scripts/, tests/
 │
-└── 03_earlier_sessions/             exercises 1-3 from Sessions 1 and 2
+├── 03_earlier_sessions/             exercises 1-3 from Sessions 1 and 2
+│
+├── 04_session4_filters/             session4_filters.pdf/.md (answers + link to the notebook in the repo), figures/
+├── 05_session5_baseline/            session5_baseline_report.pdf/.md, 05_classical_baseline.ipynb/.pdf
+└── 06_session6_neural_networks/     06_neural_networks.ipynb/.pdf (mini-challenge), 06_homework.ipynb/.pdf
 ```
 
 ---
@@ -231,7 +252,11 @@ pip install -r requirements.txt
 python scripts/build_pipeline.py             # every Part B artefact, ~35 s, deterministic
 python scripts/build_homework_notebook.py --run
 python scripts/export_notebook_pdf.py homework_part_a.ipynb
-python -m pytest tests/ -q                   # 102 tests
+python scripts/build_session4_notebook.py --run                 # Session 4: filters
+python scripts/build_session5_notebook.py --run                 # Session 5: baseline (writes artifacts/session05)
+python scripts/build_session6_notebooks.py --run                # Session 6: needs class.ipynb + the Session 5 run
+python scripts/build_session_reports.py                         # Session 4 and 5 report text from the notebooks
+python -m pytest tests/ -q                   # 125 tests
 ```
 
 The splits are byte-identical on every rebuild (seed 42, created 2026-09-24).
@@ -291,6 +316,27 @@ def main() -> int:
     for pdf in sorted((ROOT / "exercises").glob("*.pdf")):
         shutil.copy2(pdf, earlier / pdf.name)
         print(f"  {pdf.name}  {human(pdf.stat().st_size)}")
+
+    print("Sessions 4-6")
+    for folder, report, title, figs, extra in SESSIONS:
+        d = FINISHED / folder
+        (d / "figures").mkdir(parents=True, exist_ok=True)
+        if report:
+            md = ROOT / "reports" / f"{report}.md"
+            text = md.read_text()
+            for f in figs:
+                out = copy_figure(ROOT / "reports" / "figures" / f, d / "figures")
+                text = text.replace(f"figures/{f}", f"figures/{out.name}")
+            (d / f"{report}.md").write_text(text)
+            md_to_pdf(d / f"{report}.md", d / f"{report}.pdf", title)
+            print(f"  {folder}/{report}.pdf  {human((d / f'{report}.pdf').stat().st_size)}")
+        for name in extra:
+            shutil.copy2(ROOT / "notebooks" / name, d / name)
+            print(f"  {folder}/{name}  {human((d / name).stat().st_size)}")
+    for folder, *_ in SESSIONS:
+        fig_dir = FINISHED / folder / "figures"
+        if fig_dir.is_dir() and not any(fig_dir.iterdir()):
+            fig_dir.rmdir()
 
     print("Top level")
     shutil.copy2(ROOT / "SUBMISSION.md", FINISHED / "SUBMISSION.md")

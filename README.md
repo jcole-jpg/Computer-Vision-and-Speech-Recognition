@@ -175,7 +175,7 @@ jupyter nbconvert --to notebook --execute --inplace notebooks/03_eda_pipeline.ip
 python docs/build_report.py                                 # -> exercises/exercise_3.pdf
 ```
 
-## 5. Homework Sessions 1-3 + Milestone 1 (current)
+## 5. Homework Sessions 1-3 + Milestone 1
 
 The graded deliverable for Sessions 1-3. **Part A** is a notebook of twelve
 exercises; **Part B** turns the Session 2 code into a leak-free, reproducible
@@ -207,6 +207,35 @@ project pipeline.
 - **The colour-jitter limits are measured, not guessed.** The real Benign/Malignant
   gap is 6.54 deg of hue and 0.077 of brightness; `hue >= 0.05` and
   `brightness >= 0.3` exceed it and are not label-safe.
+
+---
+
+## 5b. Homework Sessions 4-6 (current)
+
+Filters, a classical-ML baseline and a first neural network, on the same lesion-level splits.
+Every notebook is generated and executed by a script in `scripts/`, so the written answers quote
+numbers read from saved outputs.
+
+| Session | Deliverable | Result |
+|---|---|---|
+| 4 | [`notebooks/04_filters.ipynb`](notebooks/04_filters.ipynb) · [`reports/session4_filters.md`](reports/session4_filters.md) | Malignant lesions have *lower* raw edge density (Sobel AUC 0.40) because they are lower-contrast; per unit of contrast it flips (AUC 0.70). `sigma` is the Gaussian's standard deviation in pixels. Canny, written from scratch, gives 1-px contours where Sobel gives blobs or fragments. |
+| 5 | [`notebooks/05_classical_baseline.ipynb`](notebooks/05_classical_baseline.ipynb) · [`reports/session5_baseline_report.md`](reports/session5_baseline_report.md) | 7 feature sets x 6 models, 5-fold CV on train. Baseline to beat: random forest on dermoscopic + clinical features, **test macro-F1 0.536** (95 % CI 0.47-0.60); 0.528 on the 33 dermoscopic features; majority class 0.273. |
+| 6 | [`notebooks/06_neural_networks.ipynb`](notebooks/06_neural_networks.ipynb) (class notebook + mini-challenge) | MLP on the 33 features: val 0.489 / test 0.480. Learning rates 0.1 and 1e-5 are both clearly worse; width and depth do not beat the baseline MLP beyond seed noise (+/-0.01). Nothing reaches the forest (val 0.575). |
+| 6 | [`notebooks/06_homework.ipynb`](notebooks/06_homework.ipynb) | Scoreboard, `nn.Conv2d` arguments, MLP on raw 32x32x3 pixels: test 0.484 against 0.480 for the 33 features, a tie with 83x the parameters and far more seed variance. |
+
+New code: [`features.py`](src/milk10k/features.py) (features, cached extraction, lesion-level split loading),
+[`filters.py`](src/milk10k/filters.py) (kernels, Gaussian, Sobel, Canny from scratch),
+[`mlp.py`](src/milk10k/mlp.py) (the Session 6 network and training loop).
+The Session 6 builder reads the instructor's `class.ipynb` (not committed) and swaps its course-package
+imports for this repository's code. The reference numbers on the slides (forest 0.534, MLP 0.493) came
+from different splits; this project reports the numbers measured on its own.
+
+```bash
+python scripts/build_session4_notebook.py --run      # filters
+python scripts/build_session5_notebook.py --run      # baseline -> artifacts/session05
+python scripts/build_session6_notebooks.py --run     # needs class.ipynb in the repo root and the Session 5 run
+python scripts/build_session_reports.py              # Session 4 / 5 report text from the executed notebooks
+```
 
 ---
 
@@ -257,7 +286,9 @@ python scripts/build_pipeline.py
 python scripts/build_homework_notebook.py --run
 python scripts/export_notebook_pdf.py homework_part_a.ipynb
 
-# 3. run the test suite (100 tests; the real-data ones skip if MILK10k is absent)
+# 3. Sessions 4-6 (see section 5b for the order), then run the tests
+#    (125 tests; the real-data ones skip if MILK10k is absent; pass `tests/` because a bare
+#    `pytest` also collects the copies under Finished/)
 python -m pytest tests/ -q
 ```
 
@@ -288,6 +319,9 @@ Computer-Vision-Speech-Recognition/
 │   ├── labels.py                 ← label strategy, label map, class weights (B3)
 │   ├── augment.py                ← train/eval transforms + augmentation audit (A3.5, B7)
 │   ├── datasets.py               ← LesionDataset, image Dataset, DataLoaders (A3.6, B8)
+│   ├── features.py               ← colour/texture features, cached extraction, lesion splits (S5)
+│   ├── filters.py                ← kernels, Gaussian, Sobel, Canny from scratch (S4)
+│   ├── mlp.py                    ← the Session 6 MLP and its training loop
 │   ├── stats.py                  ← metadata ↔ target association tests (Session 2)
 │   ├── color.py                  ← histogram / colour statistics (Session 2)
 │   ├── preprocess.py             ← the original preprocessing pipeline (Session 2)
@@ -297,6 +331,8 @@ Computer-Vision-Speech-Recognition/
 ├── scripts/                      ← entry points; they orchestrate, they do not implement
 │   ├── build_pipeline.py         ← builds every Part B artefact (B1-B8)
 │   ├── build_homework_notebook.py← generates and executes homework_part_a.ipynb
+│   ├── build_session4_notebook.py, build_session5_notebook.py, build_session6_notebooks.py
+│   ├── build_session_reports.py  ← Session 4 / 5 report text from the executed notebooks
 │   └── export_notebook_pdf.py    ← notebook → HTML → headless Chrome → PDF
 │
 ├── artifacts/                    ← COMMITTED generated outputs (small, and the evidence)
@@ -310,7 +346,8 @@ Computer-Vision-Speech-Recognition/
 │   ├── data_quality_report.md    ← missing values, shortcuts, leaky columns(B4)
 │   ├── augmentation_table.csv    ← each augmentation + medical justification(B7)
 │   ├── split_verification.csv    ← the B5 checks, saved
-│   └── pipeline_summary.json     ← every headline number, machine-readable
+│   ├── pipeline_summary.json     ← every headline number, machine-readable
+│   └── features/, session04/, session05/, session06/  ← cached features and Sessions 4-6 results
 │
 ├── data/
 │   ├── raw/milk10k/              ← the dataset (GIT-IGNORED - download it)
@@ -318,14 +355,21 @@ Computer-Vision-Speech-Recognition/
 ├── notebooks/                    ← exploratory notebooks from earlier sessions
 │   ├── 01_eda_milk10k.ipynb      ← Session 1 EDA
 │   ├── 02_image_basics.ipynb     ← Session 2: pixels, channels, colour
-│   └── 03_eda_pipeline.ipynb     ← Session 2 homework: extended EDA
-├── tests/                        ← 100 pytest tests
+│   ├── 03_eda_pipeline.ipynb     ← Session 2 homework: extended EDA
+│   ├── 04_filters.ipynb          ← Session 4: filters, Gaussian sigma, Canny vs Sobel
+│   ├── 05_classical_baseline.ipynb ← Session 5: feature sets x models
+│   ├── 06_neural_networks.ipynb  ← Session 6: class notebook + mini-challenge
+│   └── 06_homework.ipynb         ← Session 6 homework: scoreboard, Conv2d, raw pixels
+├── tests/                        ← 125 pytest tests
 │   ├── conftest.py               ← synthetic image fixtures
 │   ├── test_splits.py            ← the A3.2 property test, 10 seeds
 │   ├── test_imaging_datasets.py  ← PSNR, views, transforms, Datasets
+│   ├── test_features.py, test_filters.py, test_mlp.py  ← Sessions 4-6
 │   └── test_*.py                 ← Session 2 loader/preprocess/stats tests
 ├── reports/
 │   ├── milestone1_report.md      ← the Milestone 1 report (B9)
+│   ├── session4_filters.md       ← Session 4 answers
+│   ├── session5_baseline_report.md ← Session 5 report
 │   └── figures/                  ← every exported figure (PNG)
 ├── exercises/                    ← earlier graded deliverables (PDF)
 └── docs/                         ← PDF builders for the earlier exercises
@@ -392,7 +436,7 @@ Everything a grader needs, collected into one folder and one emailable zip:
 python scripts/build_submission_folder.py
 ```
 
-Writes `Finished/` (~15 MB, 59 files) and `Cole_Joshua_CVSR_Sessions_1-3.zip` (~12 MB):
+Writes `Finished/` (~24 MB, 97 files) and `Cole_Joshua_CVSR_Sessions_1-6.zip` (~19 MB):
 
 ```
 Finished/
@@ -400,11 +444,14 @@ Finished/
 ├── SUBMISSION.md                the required link list
 ├── 01_Part_A_notebook/          homework_part_a.pdf (33 pp) + .ipynb
 ├── 02_Part_B_milestone1/        report, prevalence analysis, README, artifacts, figures, source
-└── 03_earlier_sessions/         exercises 1-3
+├── 03_earlier_sessions/         exercises 1-3
+├── 04_session4_filters/         session4_filters.pdf (answers + link to the notebook)
+├── 05_session5_baseline/        session5_baseline_report.pdf + the notebook
+└── 06_session6_neural_networks/ mini-challenge and homework notebooks (ipynb + pdf)
 ```
 
 Both are git-ignored: every file in them is assembled from content already committed
-elsewhere in the repo, so committing the bundle would duplicate ~15 MB. The Markdown
+elsewhere in the repo, so committing the bundle would duplicate ~24 MB. The Markdown
 reports are rendered to PDF (headless Chrome, no LaTeX needed) and the photo-heavy
 figures are re-encoded to JPEG so the zip stays comfortably under a 25 MB mail limit —
 full-resolution PNGs remain in `reports/figures/`.

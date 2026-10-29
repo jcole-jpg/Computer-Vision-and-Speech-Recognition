@@ -1,4 +1,4 @@
-# Submission — Homework Sessions 1–3 + Course Project Milestone 1
+# Submission — Homework Sessions 1–6 + Course Project Milestone 1
 
 **Name:** Joshua Cole
 **Repository:** https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition
@@ -6,11 +6,27 @@
 **Dataset:** MILK10k (5,240 lesions / 10,480 images) · seed `42` · splits created 2026-09-24
 
 > **Emailing this?** `python scripts/build_submission_folder.py` collects every deliverable
-> below into `Finished/` and writes a single 12 MB zip — see [README §10](README.md#10-packaging-the-submission).
+> below into `Finished/` and writes a single 19 MB zip — see [README §10](README.md#10-packaging-the-submission).
 
 > Raw images are **not** committed (~350 MB, CC-BY-NC). Download `milk10k.zip` from the ISIC
 > Archive and extract it to `data/raw/milk10k/`, or point `$MILK10K_DATA` at it. Setup and the
 > exact reproduction commands are in [README §6](README.md#6-setup-and-reproduction).
+
+---
+
+## Sessions 4–6
+
+| Session | Submit | Notebook / code in the repo |
+|---|---|---|
+| 4 — filters | [`reports/session4_filters.md`](reports/session4_filters.md) → `Finished/04_session4_filters/session4_filters.pdf` (answers) | [`notebooks/04_filters.ipynb`](notebooks/04_filters.ipynb) · [`src/milk10k/filters.py`](src/milk10k/filters.py) (Canny from scratch) |
+| 5 — classical baseline | [`reports/session5_baseline_report.md`](reports/session5_baseline_report.md) → `session5_baseline_report.pdf` | [`notebooks/05_classical_baseline.ipynb`](notebooks/05_classical_baseline.ipynb) · [`src/milk10k/features.py`](src/milk10k/features.py) |
+| 6 — mini-challenge | [`notebooks/06_neural_networks.pdf`](notebooks/06_neural_networks.pdf) (updated class notebook) | [`notebooks/06_neural_networks.ipynb`](notebooks/06_neural_networks.ipynb) · [`src/milk10k/mlp.py`](src/milk10k/mlp.py) |
+| 6 — homework | [`notebooks/06_homework.pdf`](notebooks/06_homework.pdf) | [`notebooks/06_homework.ipynb`](notebooks/06_homework.ipynb) |
+
+Results (test macro-F1, seed 42): majority class 0.273 · random forest baseline 0.536 (0.528 on the 33 dermoscopic features) ·
+MLP on the 33 features 0.480 · MLP on raw 32×32×3 pixels 0.484.
+Rebuild: `python scripts/build_session4_notebook.py --run`, `build_session5_notebook.py --run`,
+`build_session6_notebooks.py --run`, `build_session_reports.py`. The same PDFs are in `Finished/` and in the zip.
 
 ---
 
@@ -98,18 +114,20 @@ python scripts/build_pipeline.py     # ~35 s, deterministic
 | [`labels.py`](src/milk10k/labels.py) | Label strategy, label map, class weights (B3) |
 | [`augment.py`](src/milk10k/augment.py) | Transforms (B7) and the quantitative augmentation audit (A3.5) |
 | [`datasets.py`](src/milk10k/datasets.py) | `LesionDataset` (A3.6), image `Dataset` + loaders (B8) |
+| [`features.py`](src/milk10k/features.py) · [`filters.py`](src/milk10k/filters.py) · [`mlp.py`](src/milk10k/mlp.py) | Sessions 4–6: features and cached extraction, kernels and Canny, the MLP |
 | [`stats.py`](src/milk10k/stats.py) · [`color.py`](src/milk10k/color.py) · [`preprocess.py`](src/milk10k/preprocess.py) · [`loader.py`](src/milk10k/loader.py) · [`viz.py`](src/milk10k/viz.py) | Session 2 code, reused and refactored |
 
 ### Tests
 
 ```bash
-python -m pytest tests/ -q      # 100 passed
+python -m pytest tests/ -q      # 125 passed
 ```
 
 | File | Covers |
 |---|---|
 | [`tests/test_splits.py`](tests/test_splits.py) | The A3.2 property test over 10 seeds, label map, class weights |
 | [`tests/test_imaging_datasets.py`](tests/test_imaging_datasets.py) | PSNR, views vs copies, transforms, both Datasets, aggregation |
+| [`tests/test_features.py`](tests/test_features.py) · [`tests/test_filters.py`](tests/test_filters.py) · [`tests/test_mlp.py`](tests/test_mlp.py) | Features, filters and Canny, the MLP (Sessions 4–6) |
 | [`tests/test_preprocess.py`](tests/test_preprocess.py) · [`tests/test_loader.py`](tests/test_loader.py) · [`tests/test_stats_color.py`](tests/test_stats_color.py) | Session 2 modules |
 
 ---
