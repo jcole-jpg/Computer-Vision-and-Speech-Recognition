@@ -1,0 +1,6 @@
+{
+  "model": "MLP 33-64-3 on Session 5's 33 handcrafted features",
+  "val_macro_f1": 0.489,
+  "test_accuracy": 0.633,
+  "test_macro_f1": 0.48
+}

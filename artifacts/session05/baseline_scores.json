@@ -1,0 +1,21 @@
+{
+  "model": "random forest on derm + clinical (66)",
+  "best_params": {
+    "model__max_features": "sqrt",
+    "model__min_samples_leaf": 5
+  },
+  "cv_macro_f1": 0.582,
+  "val_macro_f1": 0.568,
+  "test_macro_f1": 0.536,
+  "test_macro_f1_ci95": "[0.472, 0.601]",
+  "test_accuracy": 0.744,
+  "forest_33": {
+    "val_macro_f1": 0.575,
+    "test_macro_f1": 0.528
+  },
+  "majority": {
+    "val_macro_f1": 0.273,
+    "test_macro_f1": 0.273
+  },
+  "seed": 42
+}

@@ -1,0 +1,11 @@
+{
+  "mlp_33": {
+    "val_macro_f1": 0.489,
+    "test_macro_f1": 0.48
+  },
+  "mlp_raw_pixels": {
+    "val_macro_f1": 0.549,
+    "test_macro_f1": 0.484
+  },
+  "mlp_raw_regularised_val_only": 0.522
+}

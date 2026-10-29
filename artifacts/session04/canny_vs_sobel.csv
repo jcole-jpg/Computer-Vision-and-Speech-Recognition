@@ -1,0 +1,5 @@
+,edge pixels (%),pixels not on a 1-px line (%),connected pieces
+"Sobel, σ=0, thr 20 %",2.9,4.94,564.0
+"Sobel, σ=1.5, thr 20 %",5.22,28.3,321.0
+"Sobel, same pixel count as Canny",10.15,35.66,368.0
+Canny σ=1.5,10.15,0.03,309.0

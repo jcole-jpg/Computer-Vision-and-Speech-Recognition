@@ -1,0 +1,6 @@
+model,parameters,val macro-F1,test macro-F1,test accuracy
+majority class,0.0,0.273,0.273,0.694
+"Session 5 forest, 33 features",,0.575,0.528,
+"Session 5 best: forest, derm + clinical (66)",,0.568,0.536,0.744
+Session 6 MLP 33-64-3 (33 features),2371.0,0.489,0.48,0.637
+Session 6 MLP 3072-64-3 (raw 32x32x3 pixels),196867.0,0.549,0.484,0.724

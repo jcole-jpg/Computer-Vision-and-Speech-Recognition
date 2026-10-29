@@ -1,0 +1,8 @@
+measure,benign median,malignant median,AUC (malignant higher),95% CI
+edge density (Sobel),33.106,28.022,0.402,"[0.38, 0.42]"
+edge density / contrast,1.402,1.929,0.696,"[0.68, 0.72]"
+Laplacian variance,140.835,101.214,0.414,"[0.40, 0.44]"
+contrast (std),25.791,15.036,0.295,"[0.28, 0.31]"
+brightness (mean),134.959,149.749,0.686,"[0.66, 0.71]"
+colour: mean blue (whole image),140.365,134.544,0.421,"[0.40, 0.44]"
+colour: saturation (whole image),0.209,0.251,0.616,"[0.59, 0.64]"

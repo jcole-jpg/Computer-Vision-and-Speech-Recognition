@@ -1,0 +1,4 @@
+model,features,val macro-F1,test macro-F1,95% CI,test accuracy,Malignant recall,cost / lesion
+majority class,Session 5 set (33),0.2729,0.2732,"[0.266, 0.280]",0.6943,1.0,0.3965
+"random forest, course recipe",Session 5 set (33),0.5754,0.5276,"[0.452, 0.597]",0.7276,0.8231,6.1255
+"random forest, tuned  [CHOSEN]",derm + clinical (66),0.5678,0.5358,"[0.472, 0.601]",0.7437,0.8173,6.1255
