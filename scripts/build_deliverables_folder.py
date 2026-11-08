@@ -49,9 +49,13 @@ PLAN = [
          "Finished/04_session4_filters/session4_filters.pdf"),
     ]),
     ("05_Session_5_Classical_ML", [
-        ("5    no deliverable is listed for Session 5; supplementary: baseline report",
-         "5 supplementary - Classical baseline report.pdf", "Finished/05_session5_baseline/session5_baseline_report.pdf"),
-        ("5    supplementary: baseline notebook as PDF", "5 supplementary - Classical baseline notebook.pdf",
+        ("5.1  Homework during class: the 33 features for a benign and a malignant lesion (notebook as PDF)",
+         "5.1 Homework during class - 33 features.pdf", "notebooks/05_features_benign_vs_malignant.pdf"),
+        ("5.1  the same notebook (.ipynb, committed to the repo)",
+         "5.1 Homework during class - 33 features.ipynb", "notebooks/05_features_benign_vs_malignant.ipynb"),
+        ("5.2  Project Classical ML Baseline - Homework (PDF with the links to the code in the repo)",
+         "5.2 Project Classical ML Baseline - Homework.pdf", "Finished/05_session5_baseline/session5_baseline_report.pdf"),
+        ("5.2  extra: the baseline notebook as PDF", "5.2 extra - Classical baseline notebook.pdf",
          "notebooks/05_classical_baseline.pdf"),
     ]),
     ("06_Session_6_Neural_Networks", [

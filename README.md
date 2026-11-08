@@ -219,6 +219,7 @@ numbers read from saved outputs.
 | Session | Deliverable | Result |
 |---|---|---|
 | 4 | [`notebooks/04_filters.ipynb`](notebooks/04_filters.ipynb) · [`reports/session4_filters.md`](reports/session4_filters.md) | Malignant lesions have *lower* raw edge density (Sobel AUC 0.40) because they are lower-contrast; per unit of contrast it flips (AUC 0.70). `sigma` is the Gaussian's standard deviation in pixels. Canny, written from scratch, gives 1-px contours where Sobel gives blobs or fragments. |
+| 5 | [`notebooks/05_features_benign_vs_malignant.ipynb`](notebooks/05_features_benign_vs_malignant.ipynb) (in class) | The 33 features for one nevus and one melanoma: the melanoma is redder, higher-contrast and rougher (Laplacian variance 178 vs 72), but over all lesions the class means are nearly equal, so no single feature separates the classes. |
 | 5 | [`notebooks/05_classical_baseline.ipynb`](notebooks/05_classical_baseline.ipynb) · [`reports/session5_baseline_report.md`](reports/session5_baseline_report.md) | 7 feature sets x 6 models, 5-fold CV on train. Baseline to beat: random forest on dermoscopic + clinical features, **test macro-F1 0.536** (95 % CI 0.47-0.60); 0.528 on the 33 dermoscopic features; majority class 0.273. |
 | 6 | [`notebooks/06_neural_networks.ipynb`](notebooks/06_neural_networks.ipynb) (class notebook + mini-challenge) | MLP on the 33 features: val 0.489 / test 0.480. Learning rates 0.1 and 1e-5 are both clearly worse; width and depth do not beat the baseline MLP beyond seed noise (+/-0.01). Nothing reaches the forest (val 0.575). |
 | 6 | [`notebooks/06_homework.ipynb`](notebooks/06_homework.ipynb) | Scoreboard, `nn.Conv2d` arguments, MLP on raw 32x32x3 pixels: test 0.484 against 0.480 for the 33 features, a tie with 83x the parameters and far more seed variance. |
@@ -331,7 +332,7 @@ Computer-Vision-and-Speech-Recognition/
 ├── scripts/                      ← entry points; they orchestrate, they do not implement
 │   ├── build_pipeline.py         ← builds every Part B artefact (B1-B8)
 │   ├── build_homework_notebook.py← generates and executes homework_part_a.ipynb
-│   ├── build_session4_notebook.py, build_session5_notebook.py, build_session6_notebooks.py
+│   ├── build_session4_notebook.py, build_session5_notebook.py, build_session5_class_notebook.py, build_session6_notebooks.py
 │   ├── build_session_reports.py  ← Session 4 / 5 report text from the executed notebooks
 │   └── export_notebook_pdf.py    ← notebook → HTML → headless Chrome → PDF
 │
@@ -357,6 +358,7 @@ Computer-Vision-and-Speech-Recognition/
 │   ├── 02_image_basics.ipynb     ← Session 2: pixels, channels, colour
 │   ├── 03_eda_pipeline.ipynb     ← Session 2 homework: extended EDA
 │   ├── 04_filters.ipynb          ← Session 4: filters, Gaussian sigma, Canny vs Sobel
+│   ├── 05_features_benign_vs_malignant.ipynb ← Session 5 in class: the 33 features, benign vs malignant
 │   ├── 05_classical_baseline.ipynb ← Session 5: feature sets x models
 │   ├── 06_neural_networks.ipynb  ← Session 6: class notebook + mini-challenge
 │   └── 06_homework.ipynb         ← Session 6 homework: scoreboard, Conv2d, raw pixels

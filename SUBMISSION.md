@@ -34,13 +34,14 @@ Everything to upload, in the order of the course page, is in `Deliverables/` (`p
 | Session | Submit | Notebook / code in the repo |
 |---|---|---|
 | 4 — filters | [`reports/session4_filters.md`](reports/session4_filters.md) → `Finished/04_session4_filters/session4_filters.pdf` (answers) | [`notebooks/04_filters.ipynb`](notebooks/04_filters.ipynb) · [`src/milk10k/filters.py`](src/milk10k/filters.py) (Canny from scratch) |
-| 5 — classical baseline | [`reports/session5_baseline_report.md`](reports/session5_baseline_report.md) → `session5_baseline_report.pdf` | [`notebooks/05_classical_baseline.ipynb`](notebooks/05_classical_baseline.ipynb) · [`src/milk10k/features.py`](src/milk10k/features.py) |
+| 5 — homework during class | [`notebooks/05_features_benign_vs_malignant.pdf`](notebooks/05_features_benign_vs_malignant.pdf) (33 features, one benign and one malignant lesion) | [`notebooks/05_features_benign_vs_malignant.ipynb`](notebooks/05_features_benign_vs_malignant.ipynb) · [`src/milk10k/features.py`](src/milk10k/features.py) |
+| 5 — project: classical ML baseline | [`reports/session5_baseline_report.md`](reports/session5_baseline_report.md) → `session5_baseline_report.pdf` (links to the code) | [`notebooks/05_classical_baseline.ipynb`](notebooks/05_classical_baseline.ipynb) · [`src/milk10k/features.py`](src/milk10k/features.py) |
 | 6 — mini-challenge | [`notebooks/06_neural_networks.pdf`](notebooks/06_neural_networks.pdf) (updated class notebook) | [`notebooks/06_neural_networks.ipynb`](notebooks/06_neural_networks.ipynb) · [`src/milk10k/mlp.py`](src/milk10k/mlp.py) |
 | 6 — homework | [`notebooks/06_homework.pdf`](notebooks/06_homework.pdf) | [`notebooks/06_homework.ipynb`](notebooks/06_homework.ipynb) |
 
 Results (test macro-F1, seed 42): majority class 0.273 · random forest baseline 0.536 (0.528 on the 33 dermoscopic features) ·
 MLP on the 33 features 0.480 · MLP on raw 32×32×3 pixels 0.484.
-Rebuild: `python scripts/build_session4_notebook.py --run`, `build_session5_notebook.py --run`,
+Rebuild: `python scripts/build_session4_notebook.py --run`, `build_session5_class_notebook.py --run`, `build_session5_notebook.py --run`,
 `build_session6_notebooks.py --run`, `build_session_reports.py`. The same PDFs are in `Finished/` and in the zip.
 
 ---
