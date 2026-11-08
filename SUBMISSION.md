@@ -29,7 +29,7 @@ Everything to upload, in the order of the course page, is in `Deliverables/` (`p
 
 ---
 
-## Sessions 4–6
+## Sessions 4–7
 
 | Session | Submit | Notebook / code in the repo |
 |---|---|---|
@@ -38,9 +38,12 @@ Everything to upload, in the order of the course page, is in `Deliverables/` (`p
 | 5 — project: classical ML baseline | [`reports/session5_baseline_report.md`](reports/session5_baseline_report.md) → `session5_baseline_report.pdf` (links to the code) | [`notebooks/05_classical_baseline.ipynb`](notebooks/05_classical_baseline.ipynb) · [`src/milk10k/features.py`](src/milk10k/features.py) |
 | 6 — mini-challenge | [`notebooks/06_neural_networks.pdf`](notebooks/06_neural_networks.pdf) (updated class notebook) | [`notebooks/06_neural_networks.ipynb`](notebooks/06_neural_networks.ipynb) · [`src/milk10k/mlp.py`](src/milk10k/mlp.py) |
 | 6 — homework | [`notebooks/06_homework.pdf`](notebooks/06_homework.pdf) | [`notebooks/06_homework.ipynb`](notebooks/06_homework.ipynb) |
+| 7.1 — MiniChallenge Exercise | [`reports/session7_minichallenge.pdf`](reports/session7_minichallenge.pdf) | [`notebooks/07_cnn.ipynb`](notebooks/07_cnn.ipynb) · [`src/milk10k/cnn.py`](src/milk10k/cnn.py) |
+| 7.2 — Adapted Code | [`notebooks/07_cnn.pdf`](notebooks/07_cnn.pdf) | [`notebooks/07_cnn.ipynb`](notebooks/07_cnn.ipynb) |
+| 7.3 — Homework Session 7 | [`reports/session7_report.pdf`](reports/session7_report.pdf) (scoreboard, Sessions 5–7) | [`scripts/build_session7_notebook.py`](scripts/build_session7_notebook.py) · [`tests/test_cnn.py`](tests/test_cnn.py) · [`artifacts/session07/`](artifacts/session07/) |
 
 Results (test macro-F1, seed 42): majority class 0.273 · random forest baseline 0.536 (0.528 on the 33 dermoscopic features) ·
-MLP on the 33 features 0.480 · MLP on raw 32×32×3 pixels 0.484.
+MLP on the 33 features 0.480 · MLP on raw 32×32×3 pixels 0.484 · ResNet-18 pretrained, fully fine-tuned (Session 7) 0.598.
 Rebuild: `python scripts/build_session4_notebook.py --run`, `build_session5_class_notebook.py --run`, `build_session5_notebook.py --run`,
 `build_session6_notebooks.py --run`, `build_session_reports.py`. The same PDFs are in `Finished/` and in the zip.
 

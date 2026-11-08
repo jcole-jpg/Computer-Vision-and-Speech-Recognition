@@ -223,6 +223,7 @@ numbers read from saved outputs.
 | 5 | [`notebooks/05_classical_baseline.ipynb`](notebooks/05_classical_baseline.ipynb) · [`reports/session5_baseline_report.md`](reports/session5_baseline_report.md) | 7 feature sets x 6 models, 5-fold CV on train. Baseline to beat: random forest on dermoscopic + clinical features, **test macro-F1 0.536** (95 % CI 0.47-0.60); 0.528 on the 33 dermoscopic features; majority class 0.273. |
 | 6 | [`notebooks/06_neural_networks.ipynb`](notebooks/06_neural_networks.ipynb) (class notebook + mini-challenge) | MLP on the 33 features: val 0.489 / test 0.480. Learning rates 0.1 and 1e-5 are both clearly worse; width and depth do not beat the baseline MLP beyond seed noise (+/-0.01). Nothing reaches the forest (val 0.575). |
 | 6 | [`notebooks/06_homework.ipynb`](notebooks/06_homework.ipynb) | Scoreboard, `nn.Conv2d` arguments, MLP on raw 32x32x3 pixels: test 0.484 against 0.480 for the 33 features, a tie with 83x the parameters and far more seed variance. |
+| 7 | [`notebooks/07_cnn.ipynb`](notebooks/07_cnn.ipynb) · [`reports/session7_report.md`](reports/session7_report.md) | CNNs and fine-tuning: ResNet-18 pretrained on ImageNet and fully fine-tuned, **test macro-F1 0.598** (95 % CI 0.53-0.66), the best of Sessions 5-7; a random-weight ResNet-18 scores 0.434. |
 
 New code: [`features.py`](src/milk10k/features.py) (features, cached extraction, lesion-level split loading),
 [`filters.py`](src/milk10k/filters.py) (kernels, Gaussian, Sobel, Canny from scratch),
