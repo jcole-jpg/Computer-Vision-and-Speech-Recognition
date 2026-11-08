@@ -32,7 +32,7 @@ FINISHED = ROOT / "Finished"
 ZIP_PATH = ROOT / "Cole_Joshua_CVSR_Sessions_1-6.zip"
 CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
-REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition"
+REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition"
 STUDENT = "Joshua Cole"
 
 #: Figures that are photographs -> JPEG. Charts keep their lossless PNG.

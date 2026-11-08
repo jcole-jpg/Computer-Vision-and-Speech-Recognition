@@ -48,3 +48,9 @@ Thumbs.db
 # ~15 MB. Regenerate with: python scripts/build_submission_folder.py
 Finished/
 *_CVSR_Sessions_*.zip
+
+# Frozen ResNet-18 embeddings (10 MB, regenerated in ~1 min by milk10k.embeddings)
+artifacts/features/resnet18_embeddings.npz
+
+# Local upload folder, assembled by scripts/build_deliverables_folder.py
+Deliverables/

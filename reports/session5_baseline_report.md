@@ -2,12 +2,12 @@
 
 **MILK10k skin-lesion classification** · Joshua Cole · seed 42
 
-**Code in the repository** (https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition):
-[`notebooks/05_classical_baseline.ipynb`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/notebooks/05_classical_baseline.ipynb) (the experiment, executed, with every table and figure) ·
-[`src/milk10k/features.py`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/src/milk10k/features.py) (colour / histogram / texture / HSV / metadata features, cached extraction, lesion-level splits) ·
-[`scripts/build_session5_notebook.py`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/scripts/build_session5_notebook.py) (generates and runs the notebook) ·
-[`tests/test_features.py`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/tests/test_features.py) (tests).
-Raw outputs: [`artifacts/session05/baseline_scores.json`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/artifacts/session05/baseline_scores.json), [`artifacts/session05/feature_model_grid.csv`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/artifacts/session05/feature_model_grid.csv).
+**Code in the repository** (https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition):
+[`notebooks/05_classical_baseline.ipynb`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/notebooks/05_classical_baseline.ipynb) (the experiment, executed, with every table and figure) ·
+[`src/milk10k/features.py`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/src/milk10k/features.py) (colour / histogram / texture / HSV / metadata features, cached extraction, lesion-level splits) ·
+[`scripts/build_session5_notebook.py`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/build_session5_notebook.py) (generates and runs the notebook) ·
+[`tests/test_features.py`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/tests/test_features.py) (tests).
+Raw outputs: [`artifacts/session05/baseline_scores.json`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/session05/baseline_scores.json), [`artifacts/session05/feature_model_grid.csv`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/session05/feature_model_grid.csv).
 
 ## Result
 

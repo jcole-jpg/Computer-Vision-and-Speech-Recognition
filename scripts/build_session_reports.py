@@ -19,7 +19,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 FIG = ROOT / "reports" / "figures"
-REPO = "https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition"
+REPO = "https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition"
 BLOB = f"{REPO}/blob/main"
 
 

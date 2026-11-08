@@ -2,10 +2,10 @@
 
 **MILK10k skin-lesion classification** · Joshua Cole · seed 42
 
-**Notebook with all code, figures and outputs:** [`notebooks/04_filters.ipynb`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/notebooks/04_filters.ipynb)
-(repository: <https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition>). Code used: [`src/milk10k/filters.py`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/src/milk10k/filters.py) (filter kernels, `gaussian_kernel`,
+**Notebook with all code, figures and outputs:** [`notebooks/04_filters.ipynb`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/notebooks/04_filters.ipynb)
+(repository: <https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition>). Code used: [`src/milk10k/filters.py`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/src/milk10k/filters.py) (filter kernels, `gaussian_kernel`,
 `sobel_edges`, and `canny` written from scratch: Gaussian blur → Sobel gradients → non-maximum suppression → double threshold → hysteresis),
-built by [`scripts/build_session4_notebook.py`](https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition/blob/main/scripts/build_session4_notebook.py). Numbers below are re-read from the executed notebook
+built by [`scripts/build_session4_notebook.py`](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/build_session4_notebook.py). Numbers below are re-read from the executed notebook
 (`artifacts/session04/*.csv`).
 
 **What was done.** A bank of hand-built filters (Sobel, Prewitt, Laplacian, sharpen, Gabor at three angles, difference of Gaussians) and the 64 first-layer

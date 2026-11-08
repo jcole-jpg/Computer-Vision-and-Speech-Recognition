@@ -244,8 +244,8 @@ python scripts/build_session_reports.py              # Session 4 / 5 report text
 Python **3.13** (any 3.11+ works). Editor: VS Code with the Python and Jupyter extensions.
 
 ```bash
-git clone https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition.git
-cd Computer-Vision-Speech-Recognition
+git clone https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition.git
+cd Computer-Vision-and-Speech-Recognition
 
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
@@ -300,7 +300,7 @@ splits out.
 ## 7. Repository structure
 
 ```
-Computer-Vision-Speech-Recognition/
+Computer-Vision-and-Speech-Recognition/
 ├── README.md                     ← this file
 ├── SUBMISSION.md                 ← direct link to every graded deliverable
 ├── requirements.txt              ← pinned minimum versions of every dependency

@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FIG = ROOT / "reports" / "figures"
 PROC = ROOT / "data" / "processed"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition"
+REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition"
 
 
 def img(name: str, width: str = "100%", caption: str = "") -> str:

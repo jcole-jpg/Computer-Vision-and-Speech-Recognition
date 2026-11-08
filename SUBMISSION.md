@@ -1,7 +1,7 @@
 # Submission — Homework Sessions 1–6 + Course Project Milestone 1
 
 **Name:** Joshua Cole
-**Repository:** https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition
+**Repository:** https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition
 **Course:** Computer Vision and Speech Recognition — EADA
 **Dataset:** MILK10k (5,240 lesions / 10,480 images) · seed `42` · splits created 2026-09-24
 
@@ -11,6 +11,21 @@
 > Raw images are **not** committed (~350 MB, CC-BY-NC). Download `milk10k.zip` from the ISIC
 > Archive and extract it to `data/raw/milk10k/`, or point `$MILK10K_DATA` at it. Setup and the
 > exact reproduction commands are in [README §6](README.md#6-setup-and-reproduction).
+
+---
+
+## Sessions 1–3
+
+Everything to upload, in the order of the course page, is in `Deliverables/` (`python scripts/build_deliverables_folder.py`; see its `00_README.md`).
+
+| Item | Submit | Code in the repo |
+|---|---|---|
+| 1.1 EDA: some first outputs | [`reports/eda_first_outputs.pdf`](reports/eda_first_outputs.pdf) | [`scripts/build_eda_first_outputs.py`](scripts/build_eda_first_outputs.py) |
+| 1.2 Homework Session 1 | [`exercises/exercise_1.pdf`](exercises/exercise_1.pdf) (repo link + editor screenshot) | [`docs/build_deliverable.py`](docs/build_deliverable.py) |
+| 2.1 Exploring resolution and intensity | [`notebooks/02_resolution_and_intensity.pdf`](notebooks/02_resolution_and_intensity.pdf) | [`notebooks/02_resolution_and_intensity.ipynb`](notebooks/02_resolution_and_intensity.ipynb) · [`scripts/build_session2_exercises_notebook.py`](scripts/build_session2_exercises_notebook.py) |
+| 2.2 Extended EDA & data pipeline | [`exercises/exercise_3.pdf`](exercises/exercise_3.pdf) (report + repo link) | [`docs/build_report.py`](docs/build_report.py) · [`src/milk10k/`](src/milk10k/) |
+| 3.1 Code in class | [`notebooks/03_data_preparation_in_class.pdf`](notebooks/03_data_preparation_in_class.pdf) | [`notebooks/03_data_preparation_in_class.ipynb`](notebooks/03_data_preparation_in_class.ipynb) · [`scripts/build_session3_class_notebook.py`](scripts/build_session3_class_notebook.py) |
+| 3.2 Homework Session 3 | Part A and Part B below | below |
 
 ---
 

@@ -32,6 +32,7 @@ PRINT_CSS = """
   /* start each exercise on a fresh page so sections stay in order and legible */
   h2 { break-before: page; page-break-before: always; margin-top: 0; }
   h1 + h2, h2:first-of-type { break-before: auto; page-break-before: auto; }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
   img, svg { max-width: 100% !important; height: auto !important; }
 
   /* Wrap long source lines. nbconvert puts code in `.highlight pre` inside a

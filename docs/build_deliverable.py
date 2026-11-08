@@ -19,28 +19,25 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-Speech-Recognition"
+REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition"
 
 STRUCTURE = """\
-Computer-Vision-Speech-Recognition/
+Computer-Vision-and-Speech-Recognition/
 ├── README.md                     project overview, clinical task, dataset, findings
+├── SUBMISSION.md                 link list: every deliverable and where it lives
 ├── requirements.txt              Python dependencies
 ├── .gitignore                    keeps data / venv / checkpoints out of git
 ├── data/
 │   ├── raw/milk10k/              extracted dataset (git-ignored)
-│   │   ├── images/               10,480 x ISIC_*.jpg
-│   │   ├── metadata.csv
-│   │   └── supplements/          training_input / training_gt / training_supp .csv
-│   └── processed/                derived tables (git-ignored)
-├── notebooks/
-│   └── 01_eda_milk10k.ipynb      Exercise 1 EDA (executed, outputs included)
-├── src/
-│   ├── __init__.py
-│   └── milk10k.py                loaders, class map, merged image / lesion tables
-├── reports/
-│   └── figures/                  12 exported EDA figures
-├── exercises/
-│   └── exercise_1.pdf            this deliverable
+│   └── processed/                derived tables (lesions.csv, hw_*.csv)
+├── notebooks/                    01_eda_milk10k, 02_image_basics, 03_eda_pipeline,
+│                                 04_filters, 05_classical_baseline, 06_*  (executed)
+├── src/milk10k/                  data, labels, splits, imaging, preprocess, loader,
+│                                 datasets, viz, color, features, filters, mlp ...
+├── scripts/                      build_pipeline.py, notebook builders, PDF export
+├── tests/                        pytest suite for the package
+├── reports/                      Markdown reports + figures/
+├── exercises/                    exercise PDFs (exercise_1 = this deliverable)
 └── docs/
     ├── build_deliverable.py      builds exercises/exercise_1.pdf
     └── editor_screenshot.png"""
@@ -83,7 +80,7 @@ def build_html(screenshot: Path) -> str:
 <h2>1. Public GitHub repository</h2>
 <div class="box">
   <div class="link"><a href="{REPO_URL}">{REPO_URL}</a></div>
-  <div class="cap">EDA code: <code>notebooks/01_eda_milk10k.ipynb</code> (executed) &middot; helpers: <code>src/milk10k.py</code> &middot; figures: <code>reports/figures/</code></div>
+  <div class="cap">EDA code: <code>notebooks/01_eda_milk10k.ipynb</code> (executed) &middot; helpers: <code>src/milk10k/</code> &middot; figures: <code>reports/figures/</code></div>
 </div>
 
 <h2>2. Tasks covered</h2>
