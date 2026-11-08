@@ -1,0 +1,18 @@
+{
+ "best_overall_by_val": {
+  "model": "3 full fine-tuning",
+  "val_macro_f1": 0.7033,
+  "test_macro_f1": 0.5983
+ },
+ "best_session7_by_val": {
+  "model": "3 full fine-tuning",
+  "val_macro_f1": 0.7033,
+  "test_macro_f1": 0.5983,
+  "test_macro_f1_ci95": "[0.530, 0.662]",
+  "test_accuracy": 0.7543
+ },
+ "epochs": 10,
+ "seed": 0,
+ "device": "mps",
+ "torch": "2.14.0"
+}

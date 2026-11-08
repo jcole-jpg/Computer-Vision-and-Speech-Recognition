@@ -1,0 +1,13 @@
+session,model,trainable params,val macro-F1,test macro-F1,test accuracy,Malignant recall,cost / lesion
+5,majority class,0.0,0.273,0.273,0.694,,
+5,"Session 5 forest, 33 features",,0.575,0.528,,,
+5,"Session 5 best: forest, derm + clinical (66)",,0.568,0.536,0.744,,
+6,Session 6 MLP 33-64-3 (33 features),2371.0,0.489,0.48,0.637,,
+6,Session 6 MLP 3072-64-3 (raw 32x32x3 pixels),196867.0,0.549,0.484,0.724,,
+7,slide-15 CNN (scratch),306147.0,0.5637,0.4826,0.717,0.7788,7.5915
+7,"scratch CNN, 4 blocks + GAP",389667.0,0.4688,0.4309,0.5995,0.6212,10.1135
+7,"ResNet-18, random weights, full",11178051.0,0.5102,0.4339,0.6622,0.7769,5.7837
+7,1 feature extraction (fc),1539.0,0.5769,0.5227,0.6996,0.7423,7.6235
+7,2 partial (layer4 + fc),8395267.0,0.6545,0.5772,0.7677,0.8423,4.9399
+7,2b partial (layer3 + layer4 + fc),10494979.0,0.6841,0.5772,0.737,0.7385,8.7437
+7,3 full fine-tuning,11178051.0,0.7033,0.5983,0.7543,0.7885,6.6542
