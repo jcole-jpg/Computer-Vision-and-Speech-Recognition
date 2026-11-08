@@ -7,7 +7,7 @@
     python scripts/build_session6_notebooks.py          # write both
     python scripts/build_session6_notebooks.py --run    # write, execute, save outputs
 
-Needs ``class.ipynb`` (the instructor's Session 6 notebook, not committed) in the repo root and
+Needs ``class.ipynb`` (the instructor's Session 6 notebook, not committed) in Course Materials/Class Code/ and
 ``artifacts/session05/baseline_scores.json`` (run ``build_session5_notebook.py --run`` first).
 """
 
@@ -22,7 +22,7 @@ from nbformat.v4 import new_code_cell, new_markdown_cell
 
 from nbbuild import ROOT, SETUP, Builder
 
-CLASS_NB = ROOT / "class.ipynb"
+CLASS_NB = ROOT / "Course Materials" / "Class Code" / "class.ipynb"
 BASELINE = ROOT / "artifacts" / "session05" / "baseline_scores.json"
 
 

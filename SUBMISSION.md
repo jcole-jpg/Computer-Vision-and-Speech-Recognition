@@ -6,7 +6,7 @@
 **Dataset:** MILK10k (5,240 lesions / 10,480 images) · seed `42` · splits created 2026-09-24
 
 > **Emailing this?** `python scripts/build_submission_folder.py` collects every deliverable
-> below into `Finished/` and writes a single 19 MB zip — see [README §10](README.md#10-packaging-the-submission).
+> below into `build/Finished/` and writes a single 19 MB zip — see [README §10](README.md#10-packaging-the-submission).
 
 > Raw images are **not** committed (~350 MB, CC-BY-NC). Download `milk10k.zip` from the ISIC
 > Archive and extract it to `data/raw/milk10k/`, or point `$MILK10K_DATA` at it. Setup and the
@@ -33,7 +33,7 @@ Everything to upload, in the order of the course page, is in `Deliverables/` (`p
 
 | Session | Submit | Notebook / code in the repo |
 |---|---|---|
-| 4 — filters | [`reports/session4_filters.md`](reports/session4_filters.md) → `Finished/04_session4_filters/session4_filters.pdf` (answers) | [`notebooks/04_filters.ipynb`](notebooks/04_filters.ipynb) · [`src/milk10k/filters.py`](src/milk10k/filters.py) (Canny from scratch) |
+| 4 — filters | [`reports/session4_filters.md`](reports/session4_filters.md) → `build/Finished/04_session4_filters/session4_filters.pdf` (answers) | [`notebooks/04_filters.ipynb`](notebooks/04_filters.ipynb) · [`src/milk10k/filters.py`](src/milk10k/filters.py) (Canny from scratch) |
 | 5 — homework during class | [`notebooks/05_features_benign_vs_malignant.pdf`](notebooks/05_features_benign_vs_malignant.pdf) (33 features, one benign and one malignant lesion) | [`notebooks/05_features_benign_vs_malignant.ipynb`](notebooks/05_features_benign_vs_malignant.ipynb) · [`src/milk10k/features.py`](src/milk10k/features.py) |
 | 5 — project: classical ML baseline | [`reports/session5_baseline_report.md`](reports/session5_baseline_report.md) → `session5_baseline_report.pdf` (links to the code) | [`notebooks/05_classical_baseline.ipynb`](notebooks/05_classical_baseline.ipynb) · [`src/milk10k/features.py`](src/milk10k/features.py) |
 | 6 — mini-challenge | [`notebooks/06_neural_networks.pdf`](notebooks/06_neural_networks.pdf) (updated class notebook) | [`notebooks/06_neural_networks.ipynb`](notebooks/06_neural_networks.ipynb) · [`src/milk10k/mlp.py`](src/milk10k/mlp.py) |
@@ -45,7 +45,7 @@ Everything to upload, in the order of the course page, is in `Deliverables/` (`p
 Results (test macro-F1, seed 42): majority class 0.273 · random forest baseline 0.536 (0.528 on the 33 dermoscopic features) ·
 MLP on the 33 features 0.480 · MLP on raw 32×32×3 pixels 0.484 · ResNet-18 pretrained, fully fine-tuned (Session 7) 0.598.
 Rebuild: `python scripts/build_session4_notebook.py --run`, `build_session5_class_notebook.py --run`, `build_session5_notebook.py --run`,
-`build_session6_notebooks.py --run`, `build_session_reports.py`. The same PDFs are in `Finished/` and in the zip.
+`build_session6_notebooks.py --run`, `build_session_reports.py`. The same PDFs are in `build/Finished/` and in the zip.
 
 ---
 

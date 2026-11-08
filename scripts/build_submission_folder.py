@@ -1,4 +1,4 @@
-"""Assemble everything the teacher needs into Finished/, plus one zip to email.
+"""Assemble everything the teacher needs into build/Finished/, plus one zip (Archive/) to email.
 
     python scripts/build_submission_folder.py
 
@@ -28,8 +28,8 @@ import mistune
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-FINISHED = ROOT / "Finished"
-ZIP_PATH = ROOT / "Cole_Joshua_CVSR_Sessions_1-6.zip"
+FINISHED = ROOT / "build" / "Finished"
+ZIP_PATH = ROOT / "Archive" / "Cole_Joshua_CVSR_Sessions_1-6.zip"
 CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition"
@@ -254,7 +254,7 @@ python scripts/build_homework_notebook.py --run
 python scripts/export_notebook_pdf.py homework_part_a.ipynb
 python scripts/build_session4_notebook.py --run                 # Session 4: filters
 python scripts/build_session5_notebook.py --run                 # Session 5: baseline (writes artifacts/session05)
-python scripts/build_session6_notebooks.py --run                # Session 6: needs class.ipynb + the Session 5 run
+python scripts/build_session6_notebooks.py --run                # Session 6: needs Course Materials/Class Code/class.ipynb + the Session 5 run
 python scripts/build_session_reports.py                         # Session 4 and 5 report text from the notebooks
 python -m pytest tests/ -q                   # 125 tests
 ```
@@ -346,6 +346,7 @@ def main() -> int:
     print("  00_START_HERE.pdf / .md, SUBMISSION.md")
 
     # one attachment
+    ZIP_PATH.parent.mkdir(parents=True, exist_ok=True)
     ZIP_PATH.unlink(missing_ok=True)
     with zipfile.ZipFile(ZIP_PATH, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for f in sorted(FINISHED.rglob("*")):
