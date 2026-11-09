@@ -228,14 +228,14 @@ numbers read from saved outputs.
 New code: [`features.py`](src/milk10k/features.py) (features, cached extraction, lesion-level split loading),
 [`filters.py`](src/milk10k/filters.py) (kernels, Gaussian, Sobel, Canny from scratch),
 [`mlp.py`](src/milk10k/mlp.py) (the Session 6 network and training loop).
-The Session 6 builder reads the instructor's `class.ipynb` (not committed; kept in `Course Materials/Class Code/`) and swaps its course-package
+The Session 6 builder reads the instructor's `class.ipynb` (not committed; kept in `../Sessions/Session 6/`) and swaps its course-package
 imports for this repository's code. The reference numbers on the slides (forest 0.534, MLP 0.493) came
 from different splits; this project reports the numbers measured on its own.
 
 ```bash
 python scripts/build_session4_notebook.py --run      # filters
 python scripts/build_session5_notebook.py --run      # baseline -> artifacts/session05
-python scripts/build_session6_notebooks.py --run     # needs Course Materials/Class Code/class.ipynb and the Session 5 run
+python scripts/build_session6_notebooks.py --run     # needs ../Sessions/Session 6/Session 6 - class code.ipynb and the Session 5 run
 python scripts/build_session_reports.py              # Session 4 / 5 report text from the executed notebooks
 ```
 
@@ -307,10 +307,7 @@ Computer-Vision-and-Speech-Recognition/
 ├── SUBMISSION.md                 ← direct link to every graded deliverable
 ├── requirements.txt              ← pinned minimum versions of every dependency
 ├── .gitignore                    ← keeps raw images out of git, lets artifacts/ in
-├── Deliverables/                 ← (local, not committed) every submission, per session, named as on the course page
-├── Course Materials/             ← (local, not committed) course outline, slides, assignment briefs, instructor class code
-├── Archive/                      ← (local, not committed) earlier submission zips
-├── build/Finished/               ← (local, not committed) packaged bundle that Deliverables/ is assembled from
+├── build/Finished/               ← (local, not committed) packaged bundle that ../Deliverables/ is assembled from
 ├── homework_part_a.ipynb         ← PART A: the 12 exercises, executed with outputs
 ├── homework_part_a.pdf           ← PART A: the same notebook exported to PDF
 │
@@ -443,7 +440,7 @@ Everything a grader needs, collected into one folder and one emailable zip:
 python scripts/build_submission_folder.py
 ```
 
-Writes `build/Finished/` (~24 MB, 97 files) and `Archive/Cole_Joshua_CVSR_Sessions_1-6.zip` (~19 MB):
+Writes `build/Finished/` (~24 MB, 97 files) and `../Archive/Cole_Joshua_CVSR_Sessions_1-6.zip` (~19 MB):
 
 ```
 build/Finished/

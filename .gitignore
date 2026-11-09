@@ -47,12 +47,10 @@ Thumbs.db
 # this repo by scripts/build_submission_folder.py. Committing them would duplicate
 # ~15 MB. Regenerate with: python scripts/build_submission_folder.py
 build/
-Archive/
 *_CVSR_Sessions_*.zip
 
-# Local-only: the instructor's slides, briefs and class notebooks, and Deliverables/
-# (assembled by scripts/build_deliverables_folder.py)
-Course Materials/
+# Local-only copy if Deliverables/ is ever placed inside the repo
+# (it normally sits next to it, assembled by scripts/build_deliverables_folder.py)
 
 # Frozen ResNet-18 embeddings (10 MB, regenerated in ~1 min by milk10k.embeddings)
 artifacts/features/resnet18_embeddings.npz

@@ -16,7 +16,7 @@
 
 ## Sessions 1–3
 
-Everything to upload, in the order of the course page, is in `Deliverables/` (`python scripts/build_deliverables_folder.py`; see its `00_README.md`).
+Everything to upload, in the order of the course page, is in the `Deliverables/` folder that `python scripts/build_deliverables_folder.py` builds next to this repo (see its `00_README.md`).
 
 | Item | Submit | Code in the repo |
 |---|---|---|

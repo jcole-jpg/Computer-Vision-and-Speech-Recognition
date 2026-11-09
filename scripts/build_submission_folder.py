@@ -1,4 +1,4 @@
-"""Assemble everything the teacher needs into build/Finished/, plus one zip (Archive/) to email.
+"""Assemble everything the teacher needs into build/Finished/, plus one zip (../Archive/) to email.
 
     python scripts/build_submission_folder.py
 
@@ -29,7 +29,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 FINISHED = ROOT / "build" / "Finished"
-ZIP_PATH = ROOT / "Archive" / "Cole_Joshua_CVSR_Sessions_1-6.zip"
+ZIP_PATH = ROOT.parent / "Archive" / "Cole_Joshua_CVSR_Sessions_1-6.zip"
 CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 REPO_URL = "https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition"
@@ -254,7 +254,7 @@ python scripts/build_homework_notebook.py --run
 python scripts/export_notebook_pdf.py homework_part_a.ipynb
 python scripts/build_session4_notebook.py --run                 # Session 4: filters
 python scripts/build_session5_notebook.py --run                 # Session 5: baseline (writes artifacts/session05)
-python scripts/build_session6_notebooks.py --run                # Session 6: needs Course Materials/Class Code/class.ipynb + the Session 5 run
+python scripts/build_session6_notebooks.py --run                # Session 6: needs ../Sessions/Session 6/Session 6 - class code.ipynb + the Session 5 run
 python scripts/build_session_reports.py                         # Session 4 and 5 report text from the notebooks
 python -m pytest tests/ -q                   # 125 tests
 ```

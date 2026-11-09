@@ -1,11 +1,11 @@
-"""Assemble Deliverables/: every submission, numbered and named as in the course PDF.
+"""Assemble ../Deliverables/ (next to this repo): every submission, numbered and named as in the course PDF.
 
     python scripts/build_deliverables_folder.py
 
 Order and titles follow "ALL-COMPUTER VISION AND SPEECH RECOGNITION.pdf" (Sessions 1-7).
 Nothing here is a source of truth: every file is copied from where it is generated.
 Session 7 is copied in by its own build, so this script only lists what is already in
-Deliverables/07_Session_7 and never touches it.
+../Deliverables/07_Session_7_CNNs and never touches it.
 """
 
 from __future__ import annotations
@@ -14,7 +14,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "Deliverables"
+OUT = ROOT.parent / "Deliverables"      # the workspace folder that holds the repo
 
 # (session folder, [(deliverable title, file name in the folder, source in the repo)])
 PLAN = [

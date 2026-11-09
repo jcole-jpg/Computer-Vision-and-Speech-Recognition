@@ -1,6 +1,6 @@
 """Session 7 deliverables: the mini-challenge PDF, the homework report PDF and the notebook PDF.
 
-    python scripts/build_session7_reports.py [--to Deliverables/07_Session_7_CNNs]
+    python scripts/build_session7_reports.py [--to ../Deliverables/07_Session_7_CNNs]
 
 Reads what notebooks/07_cnn.ipynb wrote (artifacts/session07), so every number in the reports is the
 one in the notebook. Writes reports/session7_minichallenge.{md,pdf} and reports/session7_report.{md,pdf};
