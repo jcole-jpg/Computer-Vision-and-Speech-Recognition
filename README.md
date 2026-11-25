@@ -210,7 +210,7 @@ project pipeline.
 
 ---
 
-## 5b. Homework Sessions 4-6 (current)
+## 5b. Homework Sessions 4-7
 
 Filters, a classical-ML baseline and a first neural network, on the same lesion-level splits.
 Every notebook is generated and executed by a script in `scripts/`, so the written answers quote
@@ -237,6 +237,33 @@ python scripts/build_session4_notebook.py --run      # filters
 python scripts/build_session5_notebook.py --run      # baseline -> artifacts/session05
 python scripts/build_session6_notebooks.py --run     # needs ../Sessions/Session 6/Session 6 - class code.ipynb and the Session 5 run
 python scripts/build_session_reports.py              # Session 4 / 5 report text from the executed notebooks
+```
+
+## 5c. Final project — Milestones 4 and 5 (current)
+
+**Final model:** the average of a fully fine-tuned ResNet-18 (11 outputs) and a frozen ViT-B/16 with a
+logistic-regression head, on the dermoscopic image, with one decision threshold per class tuned on
+validation. **Internal test macro-F1 0.510** (95 % CI 0.43-0.56) on the 749 held-out lesions; ResNet-18
+alone 0.416; always "BCC" 0.059. Full write-up: [`reports/final_report.md`](reports/final_report.md)
+([PDF](reports/final_report.pdf)) · model card: [`MODEL_CARD.md`](MODEL_CARD.md).
+
+| Step | Code | Output |
+|---|---|---|
+| M4: frozen ResNet-18 vs ViT-B/16 features | [`scripts/extract_frozen_features.py`](scripts/extract_frozen_features.py) | `data/processed/final/frozen_features.npz` (git-ignored) |
+| M4: fair comparison, same head | [`src/milk10k/compare.py`](src/milk10k/compare.py) · [`scripts/compare_cnn_vit.py`](scripts/compare_cnn_vit.py) | [`artifacts/final/cnn_vs_vit.csv`](artifacts/final/cnn_vs_vit.csv) |
+| M5: 11-class CNN, ViT head, evaluation, thresholds, submission | [`src/milk10k/final.py`](src/milk10k/final.py) · [`scripts/train_final.py`](scripts/train_final.py) | [`artifacts/final/`](artifacts/final) (`scores.json`, predictions, `submission.csv`) |
+| M4/M5: confusion matrices, mistakes, fairness | [`scripts/analyse_final.py`](scripts/analyse_final.py) | `artifacts/final/*`, `reports/figures/final_*.png` |
+| Decision rule check | [`scripts/threshold_check.py`](scripts/threshold_check.py) | [`artifacts/final/threshold_check.csv`](artifacts/final/threshold_check.csv) |
+| `predict(image_path)` | [`src/milk10k/final.py`](src/milk10k/final.py) · [`scripts/predict.py`](scripts/predict.py) | 11 probabilities, top class, P(malignant) |
+| Leaderboard file only | [`scripts/make_submission.py`](scripts/make_submission.py) | `artifacts/final/submission.csv` (479 x 12) |
+
+```bash
+# the official test set: challenge.isic-archive.com/data -> MILK10k_Test_Input.zip + MILK10k_Test_Metadata.csv
+python scripts/extract_frozen_features.py
+python scripts/compare_cnn_vit.py
+python scripts/train_final.py --test-images data/raw/MILK10k_Test_Input --test-metadata data/raw/MILK10k_Test_Metadata.csv
+python scripts/analyse_final.py && python scripts/threshold_check.py
+python scripts/predict.py data/raw/milk10k/images/ISIC_0051817.jpg
 ```
 
 ---
@@ -329,7 +356,10 @@ Computer-Vision-and-Speech-Recognition/
 │   ├── color.py                  ← histogram / colour statistics (Session 2)
 │   ├── preprocess.py             ← the original preprocessing pipeline (Session 2)
 │   ├── loader.py                 ← the original Session 2 loader, kept for reference
-│   └── viz.py                    ← image grids, class balance, EDA plots
+│   ├── viz.py                    ← image grids, class balance, EDA plots
+│   ├── cnn.py                    ← Session 7 CNNs, fine-tuning strategies, training loop
+│   ├── compare.py                ← Milestone 4: frozen CNN vs ViT with the same head
+│   └── final.py                  ← Milestone 5: 11-class model, FinalModel, predict(), submission
 │
 ├── scripts/                      ← entry points; they orchestrate, they do not implement
 │   ├── build_pipeline.py         ← builds every Part B artefact (B1-B8)

@@ -1,0 +1,13 @@
+,name,malignant,train,val,test,total
+AKIEC,Actinic keratosis / intraepidermal carcinoma,yes,217,43,43,303
+BCC,Basal cell carcinoma,yes,1802,360,360,2522
+BEN_OTH,Other benign proliferations,no,32,6,6,44
+BKL,Benign keratinocytic lesion,no,388,78,78,544
+DF,Dermatofibroma,no,37,8,7,52
+INF,Inflammatory / infectious,no,36,7,7,50
+MAL_OTH,Other malignant proliferations,yes,6,1,2,9
+MEL,Melanoma,yes,320,65,65,450
+NV,Melanocytic nevus,no,532,107,107,746
+SCCKA,Squamous cell carcinoma / keratoacanthoma,yes,339,67,67,473
+VASC,Vascular lesion / hemorrhage,no,33,7,7,47
+all,,,3742,749,749,5240

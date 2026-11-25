@@ -1,0 +1,9 @@
+truth,predicted,n,share_of_true_class
+BCC,SCCKA,37,0.1
+BKL,BCC,26,0.33
+BCC,AKIEC,20,0.06
+MEL,NV,20,0.31
+NV,MEL,19,0.18
+BCC,MEL,13,0.04
+BCC,BKL,12,0.03
+AKIEC,BCC,12,0.28

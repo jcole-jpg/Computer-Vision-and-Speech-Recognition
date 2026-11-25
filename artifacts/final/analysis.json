@@ -1,0 +1,25 @@
+{
+ "m4_test_macro_f1": 0.5983090296413905,
+ "m4_test_recall": {
+  "Benign": 0.698,
+  "Indeterminate": 0.412,
+  "Malignant": 0.788
+ },
+ "val_11": {
+  "macro_f1_11": 0.4627700718170253,
+  "zero_f1_classes": [
+   "MAL_OTH"
+  ],
+  "malignant_sensitivity": 0.8133874239350912,
+  "malignant_specificity": 0.7734375
+ },
+ "test_11": {
+  "macro_f1_11": 0.46254763946262184,
+  "zero_f1_classes": [
+   "INF",
+   "MAL_OTH"
+  ],
+  "malignant_sensitivity": 0.8319838056680162,
+  "malignant_specificity": 0.6901960784313725
+ }
+}

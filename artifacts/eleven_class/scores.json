@@ -1,0 +1,171 @@
+{
+  "seed": 42,
+  "grid": {
+    "best_model": "random forest",
+    "best_feature_set": "derm + clinical (66)",
+    "best_cv_macro_f1": 0.29410638865621813,
+    "best_cv_std": 0.02015754165853782,
+    "majority_cv_macro_f1": 0.06500718769310827
+  },
+  "weight_power": {
+    "chosen": 0.75,
+    "table": [
+      {
+        "power": 0.0,
+        "cv_f1": 0.2022,
+        "cv_std": 0.0089,
+        "cv_bal_acc": 0.1885,
+        "val_f1": 0.2037,
+        "val_accuracy": 0.6008
+      },
+      {
+        "power": 0.25,
+        "cv_f1": 0.2257,
+        "cv_std": 0.0154,
+        "cv_bal_acc": 0.2069,
+        "val_f1": 0.238,
+        "val_accuracy": 0.6142
+      },
+      {
+        "power": 0.5,
+        "cv_f1": 0.2602,
+        "cv_std": 0.0199,
+        "cv_bal_acc": 0.2369,
+        "val_f1": 0.3038,
+        "val_accuracy": 0.5941
+      },
+      {
+        "power": 0.75,
+        "cv_f1": 0.2926,
+        "cv_std": 0.0286,
+        "cv_bal_acc": 0.2789,
+        "val_f1": 0.3077,
+        "val_accuracy": 0.5808
+      },
+      {
+        "power": 1.0,
+        "cv_f1": 0.2921,
+        "cv_std": 0.0342,
+        "cv_bal_acc": 0.304,
+        "val_f1": 0.2932,
+        "val_accuracy": 0.514
+      }
+    ]
+  },
+  "hand_crafted_finalist": {
+    "feature_set": "derm + clinical (66)",
+    "weight_power": 0.75,
+    "params": {
+      "model__max_features": 0.3,
+      "model__min_samples_leaf": 5
+    },
+    "cv_macro_f1": 0.3046030931927223
+  },
+  "embedding_finalist": {
+    "views": [
+      "derm",
+      "clinical"
+    ],
+    "C": 0.001,
+    "weight_power": 0.75,
+    "cv_macro_f1": 0.4082576186851373,
+    "cv_std": 0.0284972088859718
+  },
+  "test": {
+    "majority class (BCC)": {
+      "macro_f1": 0.0649,
+      "macro_f1_all11": 0.059,
+      "balanced_accuracy": 0.0909,
+      "accuracy": 0.4806,
+      "macro_f1_lo": 0.0616,
+      "macro_f1_hi": 0.0682,
+      "headline": false,
+      "top3_accuracy": null
+    },
+    "stratified random": {
+      "macro_f1": 0.1049,
+      "macro_f1_all11": 0.0953,
+      "balanced_accuracy": 0.0962,
+      "accuracy": 0.2844,
+      "macro_f1_lo": 0.0888,
+      "macro_f1_hi": 0.1226,
+      "headline": false,
+      "top3_accuracy": null
+    },
+    "hand-crafted forest": {
+      "macro_f1": 0.2811,
+      "macro_f1_all11": 0.2555,
+      "balanced_accuracy": 0.2654,
+      "accuracy": 0.5461,
+      "macro_f1_lo": 0.2321,
+      "macro_f1_hi": 0.3283,
+      "headline": false,
+      "top3_accuracy": 0.8451
+    },
+    "ResNet-18 + logistic regression": {
+      "macro_f1": 0.4234,
+      "macro_f1_all11": 0.3849,
+      "balanced_accuracy": 0.4342,
+      "accuracy": 0.5915,
+      "macro_f1_lo": 0.353,
+      "macro_f1_hi": 0.4785,
+      "headline": true,
+      "top3_accuracy": 0.8665
+    },
+    "MLP, 66 hand-crafted": {
+      "macro_f1": 0.2952,
+      "macro_f1_all11": 0.2683,
+      "balanced_accuracy": 0.32,
+      "accuracy": 0.498,
+      "macro_f1_lo": 0.2446,
+      "macro_f1_hi": 0.3396,
+      "headline": false,
+      "top3_accuracy": 0.8131
+    },
+    "MLP, ResNet-18 embeddings": {
+      "macro_f1": 0.4582,
+      "macro_f1_all11": 0.4165,
+      "balanced_accuracy": 0.5058,
+      "accuracy": 0.5995,
+      "macro_f1_lo": 0.3905,
+      "macro_f1_hi": 0.5155,
+      "headline": false,
+      "top3_accuracy": 0.8758
+    }
+  },
+  "headline_model": "ResNet-18 + logistic regression",
+  "binary": {
+    "Session 5 forest (3 classes)": {
+      "AUC": 0.7829,
+      "sens @0.5": 0.879,
+      "spec @0.5": 0.5519,
+      "cost @0.5": 4.466,
+      "threshold (val, 95 % sens.)": 0.372,
+      "sens @val-thr": 0.9441,
+      "spec @val-thr": 0.3443,
+      "cost @val-thr": 2.1883
+    },
+    "11-class hand-crafted forest": {
+      "AUC": 0.7449,
+      "sens @0.5": 0.8268,
+      "spec @0.5": 0.533,
+      "cost @0.5": 6.3405,
+      "threshold (val, 95 % sens.)": 0.3979,
+      "sens @val-thr": 0.9162,
+      "spec @val-thr": 0.316,
+      "cost @val-thr": 3.1976
+    },
+    "11-class ResNet-18 + logistic regression": {
+      "AUC": 0.8157,
+      "sens @0.5": 0.851,
+      "spec @0.5": 0.5991,
+      "cost @0.5": 5.4539,
+      "threshold (val, 95 % sens.)": 0.3288,
+      "sens @val-thr": 0.9534,
+      "spec @val-thr": 0.4245,
+      "cost @val-thr": 1.8318
+    }
+  },
+  "malignant_share_test": 0.7169559412550067,
+  "errors_same_side_share": 0.48692810457516345
+}

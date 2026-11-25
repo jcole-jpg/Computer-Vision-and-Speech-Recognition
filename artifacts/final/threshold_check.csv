@@ -1,0 +1,4 @@
+decision rule,val_macro_f1,test_macro_f1,lesions with no class (test)
+argmax,0.4628,0.4625,0
+raw probabilities >= 0.5,0.4372,0.4814,160
+per-class thresholds tuned on val (submitted),0.5025,0.5102,35

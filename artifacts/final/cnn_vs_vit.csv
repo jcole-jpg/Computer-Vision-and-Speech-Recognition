@@ -1,0 +1,5 @@
+target,backbone,features,C,val_macro_f1,val_accuracy,test_macro_f1,test_accuracy
+3 classes (diagnosis_1),resnet18,512,1.0,0.6115,0.737,0.505,0.7103
+3 classes (diagnosis_1),vit_b_16,768,0.01,0.6162,0.7597,0.618,0.773
+11 classes,resnet18,512,0.01,0.3006,0.494,0.3122,0.4993
+11 classes,vit_b_16,768,0.1,0.3748,0.5981,0.401,0.5781

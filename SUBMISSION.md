@@ -1,4 +1,4 @@
-# Submission — Homework Sessions 1–6 + Course Project Milestone 1
+# Submission — Homework Sessions 1–7 + Course Project (Milestones 1–5)
 
 **Name:** Joshua Cole
 **Repository:** https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition
@@ -11,6 +11,27 @@
 > Raw images are **not** committed (~350 MB, CC-BY-NC). Download `milk10k.zip` from the ISIC
 > Archive and extract it to `data/raw/milk10k/`, or point `$MILK10K_DATA` at it. Setup and the
 > exact reproduction commands are in [README §6](README.md#6-setup-and-reproduction).
+
+---
+
+## Final submission — Milestones 4 and 5 (due 27/11)
+
+| Item | File |
+|---|---|
+| **Final report** (PDF to upload) | [reports/final_report.pdf](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/reports/final_report.pdf) · source [reports/final_report.md](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/reports/final_report.md) |
+| **Leaderboard file** (479 x 12) | [artifacts/final/submission.csv](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/final/submission.csv) (per-class thresholds) · backups: [submission_argmax.csv](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/final/submission_argmax.csv), [submission_probabilities.csv](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/final/submission_probabilities.csv) |
+| Leaderboard proof | screenshot in the report, section 7 |
+| Model card | [MODEL_CARD.md](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/MODEL_CARD.md) |
+| predict(image_path) | [src/milk10k/final.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/src/milk10k/final.py) (`predict`, `FinalModel`, `eval_tensor`) · CLI [scripts/predict.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/predict.py) |
+| 11-class model training + evaluation | [scripts/train_final.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/train_final.py) · [src/milk10k/final.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/src/milk10k/final.py) |
+| make_submission | [scripts/make_submission.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/make_submission.py) |
+| M4: CNN vs ViT, fair comparison | [src/milk10k/compare.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/src/milk10k/compare.py) · [scripts/extract_frozen_features.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/extract_frozen_features.py) · [scripts/compare_cnn_vit.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/compare_cnn_vit.py) · [artifacts/final/cnn_vs_vit.csv](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/final/cnn_vs_vit.csv) |
+| M4: error analysis + fairness | [scripts/analyse_final.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/analyse_final.py) · [artifacts/final/](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/final) · figures `reports/figures/final_*.png` |
+| M4: 3-class test predictions of the kept model | [artifacts/final/m4_test_predictions_3class.csv](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/final/m4_test_predictions_3class.csv) |
+| Threshold check (pool 11.25) | [scripts/threshold_check.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/scripts/threshold_check.py) · [artifacts/final/threshold_check.csv](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/artifacts/final/threshold_check.csv) |
+| Tests | [tests/test_final.py](https://github.com/jcole-jpg/Computer-Vision-and-Speech-Recognition/blob/main/tests/test_final.py) |
+
+Weights (git-ignored, ~45 MB + 30 KB): `data/processed/final/resnet18_11class.pt`, `data/processed/final/vit_head.joblib`; the 3-class Milestone 4 model: `data/processed/session07/resnet18_s3_full.pt`.
 
 ---
 
